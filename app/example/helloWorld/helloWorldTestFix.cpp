@@ -4,12 +4,14 @@
 
 // testFixture: 使用一个对象进行组织，以便于多个测试项共用资源
 // 测试类定义
-class helloWorldTestFix : public ::testing::Test {
- protected:
-   virtual void SetUp() {}
+class helloWorldTestFix : public ::testing::Test
+{
+  protected:
+    virtual void SetUp()
+    {
+    }
 
-   // virtual void TearDown() {}
-
+    // virtual void TearDown() {}
 };
 
 // TEST_F(TestClassName, TestName)

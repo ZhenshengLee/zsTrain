@@ -4,9 +4,13 @@
 
 using namespace std;
 
-simpleParser::simpleParser() {}
+simpleParser::simpleParser()
+{
+}
 
-simpleParser::~simpleParser() {}
+simpleParser::~simpleParser()
+{
+}
 
 int simpleParser::parseAndSum(string numbers)
 {

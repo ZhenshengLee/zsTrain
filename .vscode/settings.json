@@ -18,5 +18,11 @@
     "python.testing.nosetestsEnabled": false,
     "python.testing.unittestEnabled": true,
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
-    "python.pythonPath": "D:\\ProgramData\\Anaconda2\\python.exe"
+    "python.pythonPath": "/usr/bin/python",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#0A3513",
+        "titleBar.activeBackground": "#0E4B1A",
+        "titleBar.activeForeground": "#F2FCF4"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

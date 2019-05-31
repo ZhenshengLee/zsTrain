@@ -29,10 +29,16 @@ void test_longlong()
     //
 }
 
-struct T1 {int i;};
-struct U1 {long long lo;};
+struct T1
+{
+    int i;
+};
+struct U1
+{
+    long long lo;
+};
 
-void bit_copy(T1 &a, U1 &b)
+void bit_copy(T1& a, U1& b)
 {
     // static_assert(sizeof(a) == sizeof(b), "if false show this");
     memcpy(&a, &b, sizeof(b));
@@ -46,7 +52,7 @@ constexpr int GetConst()
 
 void Constless(int cond)
 {
-    int arr[GetConst()] = {0};
+    int arr[GetConst()] = { 0 };
     enum
     {
         e1 = GetConst(),
@@ -78,7 +84,7 @@ void test_auto()
 {
     auto x = 1;
     auto d = foo();
-    struct T_TEST str1 = {0};
+    struct T_TEST str1 = { 0 };
     auto str2 = str1;
     auto c = 'a';
 
@@ -92,14 +98,14 @@ void test_auto1()
 {
     int x = 0;
     const long y = 100;
-    int &z = x;
+    int& z = x;
     auto a1 = ++x;
-    auto &a2 = x;
+    auto& a2 = x;
     auto a3 = z;
-    auto a4 = y*y;
-    auto &a5 = y;
-    const auto a6 = x+x;
-    auto *a7 = &y;
+    auto a4 = y * y;
+    auto& a5 = y;
+    const auto a6 = x + x;
+    auto* a7 = &y;
 
     cout << "x type:" << typeid(x).name() << endl;
     cout << "y type:" << typeid(y).name() << endl;
@@ -116,12 +122,12 @@ void test_auto1()
 void test_for()
 {
     double pi = 3.1415926f;
-    list<float> rs = {1.5f, 1.6f, 1.7f};
-    for(auto &i:rs)
+    list<float> rs = { 1.5f, 1.6f, 1.7f };
+    for (auto& i : rs)
     {
-        i = 2* pi * i;
+        i = 2 * pi * i;
     }
-    for(auto c:rs)
+    for (auto c : rs)
     {
         cout << c << endl;
     }
@@ -129,15 +135,30 @@ void test_for()
 
 namespace S
 {
-    enum Size{Normal, Little, Big};
+enum Size
+{
+    Normal,
+    Little,
+    Big
+};
 }
 namespace W
 {
-    enum Weight{Normal, Little, Big};
+enum Weight
+{
+    Normal,
+    Little,
+    Big
+};
 }
 namespace nn
 {
-    enum Weight{Normal=2, Little, Big};
+enum Weight
+{
+    Normal = 2,
+    Little,
+    Big
+};
 }
 void testEnum1()
 {
@@ -146,16 +167,36 @@ void testEnum1()
     cout << "S::Normal=" << S::Normal << endl;
     S::Size s = S::Normal;
     W::Weight w = W::Normal;
-    if(s == w)
+    if (s == w)
     {
         cout << "s == w, it's strange!" << endl;
     }
 }
 
-enum class Weight{General, Heavy, Light};
-enum class Size{General, Little, Big};
-enum class EnumChar:char{X, Y, Z};
-enum class Enumlong:long long{X, Y, Z};
+enum class Weight
+{
+    General,
+    Heavy,
+    Light
+};
+enum class Size
+{
+    General,
+    Little,
+    Big
+};
+enum class EnumChar : char
+{
+    X,
+    Y,
+    Z
+};
+enum class Enumlong : long long
+{
+    X,
+    Y,
+    Z
+};
 void testEnum2()
 {
     Weight w = Weight::General;
@@ -169,13 +210,13 @@ void testEnum2()
 void test_nullptr()
 {
     nullptr_t nptr = nullptr;
-    if(nptr == nullptr)
+    if (nptr == nullptr)
     {
-        cout << "nullptr == nullptr" <<endl;
+        cout << "nullptr == nullptr" << endl;
     }
     int iA = 0;
-    int *pA = &iA;
-    if(nullptr != pA)
+    int* pA = &iA;
+    if (nullptr != pA)
     {
         cout << "pA != nullptr" << endl;
     }
@@ -205,8 +246,8 @@ struct alignas(32) ColorVector
 };
 void test_alignment2()
 {
-    cout << "alignof(ColorVector):" << alignof(ColorVector) <<endl;
-    cout << "sizeof(ColorVector):" << sizeof(ColorVector) <<endl;
+    cout << "alignof(ColorVector):" << alignof(ColorVector) << endl;
+    cout << "sizeof(ColorVector):" << sizeof(ColorVector) << endl;
 }
 
 void hello()

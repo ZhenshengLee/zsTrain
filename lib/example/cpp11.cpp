@@ -9,10 +9,8 @@ using namespace std;
 
 CCpp11::CCpp11()
 {
-
 }
 
 CCpp11::~CCpp11()
 {
-
 }

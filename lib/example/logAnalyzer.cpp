@@ -1,6 +1,6 @@
 #include "public/common.h"
 
-#include "example/LogAnalyzer.h"
+#include "example/logAnalyzer.h"
 
 // *****************************************************************************
 // LogAnalyzer Implementation
@@ -25,13 +25,17 @@ bool LogAnalyzer::IsValidLogFileName(string filename)
 // *****************************************************************************
 // FileExtMgr Implementation
 // *****************************************************************************
-FileExtMgr::FileExtMgr() {}
+FileExtMgr::FileExtMgr()
+{
+}
 
-FileExtMgr::~FileExtMgr() {}
+FileExtMgr::~FileExtMgr()
+{
+}
 
 bool FileExtMgr::IsValid(string filename)
 {
-    if(EndWith(filename, ".SLF") || EndWith(filename, ".slf"))
+    if (EndWith(filename, ".SLF") || EndWith(filename, ".slf"))
     {
         return true;
     }
@@ -42,7 +46,7 @@ bool FileExtMgr::EndWith(string filename, string ext)
 {
     // cout << "compare" << filename.length()-ext.length() << "and" << ext.length() "and" << ext;
     // todo: 使用日志系统管理输出
-    if(0 == filename.compare(filename.length()-ext.length(), ext.length(), ext))
+    if (0 == filename.compare(filename.length() - ext.length(), ext.length(), ext))
     {
         return true;
     }

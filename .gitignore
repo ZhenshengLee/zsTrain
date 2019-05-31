@@ -9,5 +9,5 @@ out/
 .cache/
 *.pyc
 /.vs/
-tools/
+tools/*
 .vscode/ipch/

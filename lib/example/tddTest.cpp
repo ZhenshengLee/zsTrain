@@ -4,39 +4,43 @@
 
 using namespace std;
 
-tddTest::tddTest() {}
+tddTest::tddTest()
+{
+}
 
-tddTest::~tddTest() {}
+tddTest::~tddTest()
+{
+}
 
 struct Context
 {
-    const char *pBuf;
+    const char* pBuf;
     int iPos;
 };
 
-int getNumBracket(Context &ctx)
+int getNumBracket(Context& ctx)
 {
     // ...
 }
 
-int getNum(Context &ctx)
+int getNum(Context& ctx)
 {
     // ascii of '0' is 0x30
     return ctx.pBuf[ctx.iPos++] - '0';
 }
 
-const char getOp(Context &ctx)
+const char getOp(Context& ctx)
 {
     return *(ctx.pBuf + ctx.iPos++);
 }
 
-int simpleCalc(char cOp, Context &ctx, int &num)
+int simpleCalc(char cOp, Context& ctx, int& num)
 {
-    if('+' == cOp)
+    if ('+' == cOp)
     {
         return num += getNum(ctx);
     }
-    else if('-' == cOp)
+    else if ('-' == cOp)
     {
         return num -= getNum(ctx);
     }
@@ -46,7 +50,7 @@ int simpleCalc(char cOp, Context &ctx, int &num)
 int calc(int iRet, char cOp, int iNum)
 {
     // printf("iRet: %d",iRet);
-    switch(cOp)
+    switch (cOp)
     {
         case '+':
             iRet += iNum;
@@ -66,23 +70,23 @@ int calc(int iRet, char cOp, int iNum)
     return iRet;
 }
 
-bool isMul(Context &ctx)
+bool isMul(Context& ctx)
 {
     // 只是判定，不改变上下文环境
-    return '*' == *(ctx.pBuf+ctx.iPos) || '/' == *(ctx.pBuf+ctx.iPos);
+    return '*' == *(ctx.pBuf + ctx.iPos) || '/' == *(ctx.pBuf + ctx.iPos);
 }
 
-bool isAdd(Context &ctx)
+bool isAdd(Context& ctx)
 {
     // 只是判定，不改变上下文环境
-    return '+' == *(ctx.pBuf+ctx.iPos) || '-' == *(ctx.pBuf+ctx.iPos);
+    return '+' == *(ctx.pBuf + ctx.iPos) || '-' == *(ctx.pBuf + ctx.iPos);
 }
 
 // 范式：取出左值，取出符号，取出右值
-int operation(Context &ctx, int (*fnNum)(Context&), bool (*fnOp)(Context&))
+int operation(Context& ctx, int (*fnNum)(Context&), bool (*fnOp)(Context&))
 {
     int iRet = fnNum(ctx);
-    while(fnOp(ctx))
+    while (fnOp(ctx))
     {
         char cOp = getOp(ctx);
         int iRight = fnNum(ctx);
@@ -91,11 +95,11 @@ int operation(Context &ctx, int (*fnNum)(Context&), bool (*fnOp)(Context&))
     return iRet;
 }
 
-int mul(Context &ctx)
+int mul(Context& ctx)
 {
     return operation(ctx, getNum, isMul);
     int iRet = getNum(ctx);
-    while(isMul(ctx))
+    while (isMul(ctx))
     {
         char cOp = getOp(ctx);
         int iNum = getNum(ctx);
@@ -104,13 +108,13 @@ int mul(Context &ctx)
     return iRet;
 }
 
-int add(Context &ctx, int iAdd)
+int add(Context& ctx, int iAdd)
 {
     // 乘加代替加，因为任何数可以看做1*他本身
     return operation(ctx, mul, isAdd);
     return operation(ctx, getNum, isAdd);
     int iRet = iAdd;
-    while(isAdd(ctx))
+    while (isAdd(ctx))
     {
         char cOp = getOp(ctx);
         int iNum = getNum(ctx);
@@ -119,13 +123,13 @@ int add(Context &ctx, int iAdd)
     return iRet;
 }
 
-int mulAdd(Context &ctx)
+int mulAdd(Context& ctx)
 {
     return operation(ctx, mul, isAdd);
     int iRet = 0;
     // iPos为一个全局游标
     iRet = mul(ctx);
-    while(isAdd(ctx))
+    while (isAdd(ctx))
     {
         char cOp = getOp(ctx);
         int iNum = mul(ctx);
@@ -134,13 +138,13 @@ int mulAdd(Context &ctx)
     return iRet;
 }
 
-int addMul(Context &ctx)
+int addMul(Context& ctx)
 {
     return mulAdd(ctx);
     int iRet = 0;
     // iPos为一个全局游标
     iRet = getNum(ctx);
-    while(isAdd(ctx))
+    while (isAdd(ctx))
     {
         char cOp = getOp(ctx);
         int iNum = mul(ctx);
@@ -204,7 +208,7 @@ int tddTest::expr(const char* pStr)
     ctx.iPos = 0;
     int iRet = getNum(ctx);
     // iPos为一个全局游标
-    while(0 != ctx.pBuf[ctx.iPos])
+    while (0 != ctx.pBuf[ctx.iPos])
     {
         char cOp = getOp(ctx);
         int iNum = getNum(ctx);

@@ -14,7 +14,7 @@ using ::testing::Return;
 // 测试类定义
 class IsValidLogFileName : public ::testing::Test
 {
-protected:
+  protected:
     virtual void SetUp()
     {
     }
@@ -22,8 +22,7 @@ protected:
     // virtual void TearDown()
     // {
     // }
-public:
-
+  public:
 };
 
 // TEST_F(TestClassName, TestName)
@@ -57,8 +56,6 @@ TEST(zsIsValidLogFileName, BadExtension_returnFalse)
     LogAnalyzer m_Analyzer(&fileExtMgr);
 
     // 确定期待mock-class发生的行为
-    EXPECT_CALL(fileExtMgr, IsValid(HasSubstr("extension.SLF")))
-        .Times(AtLeast(1))
-        .WillOnce(Return(true));
+    EXPECT_CALL(fileExtMgr, IsValid(HasSubstr("extension.SLF"))).Times(AtLeast(1)).WillOnce(Return(true));
     EXPECT_TRUE(m_Analyzer.IsValidLogFileName("filewithgoodextension.SLF"));
 }

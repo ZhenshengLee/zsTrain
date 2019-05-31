@@ -41,12 +41,7 @@
             "program": "${file}",
             "cwd": "${workspaceRoot}",
             "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-                "WaitOnAbnormalExit",
-                "WaitOnNormalExit",
-                "RedirectOutput"
-            ]
+            "envFile": "${workspaceRoot}/.env"
         },
         {
             "name": "C++ Launch",
