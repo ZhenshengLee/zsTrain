@@ -11,3 +11,4 @@ out/
 /.vs/
 tools/*
 .vscode/ipch/
+.vscode/settings.json
