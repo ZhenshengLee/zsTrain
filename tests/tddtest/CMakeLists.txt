@@ -1,0 +1,5 @@
+add_executable(zst_tddtesttest tddtestTest.cpp)
+target_link_libraries(zst_tddtesttest PRIVATE zst_tddtest)
+target_link_libraries(zst_tddtesttest PRIVATE gtest::gtest)
+
+zsa_add_tests(TARGET zst_tddtesttest HARDWARE_REQUIRED TEST_TYPE FUNCTIONAL)
