@@ -1,0 +1,6 @@
+find_package(PCL REQUIRED)
+add_executable(kdtree_search kdtree_search.cpp)
+add_definitions(${PCL_DEFINITIONS})
+target_include_directories(kdtree_search PRIVATE ${PCL_INCLUDE_DIRS})
+target_link_directories(kdtree_search PRIVATE ${PCL_LIBRARY_DIRS})
+target_link_libraries(kdtree_search PRIVATE ${PCL_LIBRARIES})

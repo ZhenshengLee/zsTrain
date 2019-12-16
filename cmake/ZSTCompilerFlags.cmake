@@ -35,7 +35,8 @@ elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
     list(APPEND GNU_ALL_WARNINGS "-Wno-missing-field-initializers") # Allow c structs without all fields initialized
     set(GNU_WARNINGS_AS_ERRORS "-Werror")
     add_compile_options(${GNU_ALL_WARNINGS})
-    add_compile_options(${GNU_WARNINGS_AS_ERRORS})
+    # zs: 太严格了
+    # add_compile_options(${GNU_WARNINGS_AS_ERRORS})
 elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
     set(MSVC_ALL_WARNINGS "/W4" "/wd4200") #Note: allow zero length arrays
     set(MSVC_WARNINGS_AS_ERRORS "/WX")
