@@ -12,3 +12,4 @@ out/
 tools/*
 .vscode/ipch/
 .vscode/settings.json
+_gsdata_/

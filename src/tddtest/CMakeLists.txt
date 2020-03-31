@@ -1,4 +1,4 @@
-add_library(zst_tddtest STATIC
+add_library(zst_tddtest SHARED
             tddtest.cpp
             )
 
